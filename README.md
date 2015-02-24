@@ -4,10 +4,17 @@ gPhoto2 Bottle is a simple web app based for controlling cameras supported by [g
 
 <img src="gphoto2-bottle.png" alt="gPhoto2 Bottle">
 
+## Dependencies
+
+* Python
+* Python Bottle
+* gPhoto2
+* Git (optional)
+
 ## Install and Run
 
 1. Clone the project's repository using the `git clone https://github.com/dmpop/gphoto2-bottle.git` command. Switch to the resulting *gphoto2-bottle* directory.
-2. Compile gPhoto 2.5.2 by running the `sudo ./gphoto2-updater.sh` command. This step is required only if the official repositories contain version of gPhoto2 lower than 2.5.2.
+2. Compile and install gPhoto 2.5.2 by running the `sudo ./gphoto2-updater.sh` command. This step is required only if the official repositories contain version of gPhoto2 lower than 2.5.2.
 3. Install the Bottle framework using the `sudo apt-get install python-pip` and `sudo pip install bottle` commands.
 4. Launch the app by running the `sudo ./gphoto2-bottle.py` command.
 5. Make sure that your camera connected to the machine running gPhoto2 Bottle via a USB cable.
