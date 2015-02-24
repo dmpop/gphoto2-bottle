@@ -16,15 +16,18 @@
 from bottle import post, route, request, run
 import os, time
 
+# Camera-specific parameters
 param1 = '/main/capturesettings/f-number=f/'
 param2 = '/main/capturesettings/shutterspeed2='
 param3 = '/main/imgsettings/iso='
+# Default gPhoto2 command
+gphoto2_command = 'gphoto2 --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"'
 
 @route('/')
 @route('/', method='POST')
 def release_control():
     if (request.POST.get("shutter_release")):
-        os.system('gphoto2 --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"')
+        os.system(gphoto2_command)
     if (request.POST.get("set-config")):
         aperture = request.forms.get('aperture')
         os.system('gphoto2 --set-config-value ' + param1 + aperture)
@@ -66,9 +69,9 @@ def release_control():
         font: 15px/25px 'Open Sans', sans-serif;
     }
     p.justify {
-    text-align: justify;
+        text-align: justify;
     }
-    p.right {
+        p.right {
     text-align: right;
     }
     #content {
