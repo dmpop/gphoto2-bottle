@@ -45,28 +45,37 @@ def release_control():
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <form method="POST" action="/">
     <div id="content"><p><input id="btn" name="shutter_release" type="submit" value="Shutter Release"></p>
-    <p>f/ <input name="aperture" type="text" size="1"/> Exposure: <input name="shutterspeed" type="text" size="2"/> ISO: <input name="iso" type="text" size="2"/>
+    <p class="right">Aperture (e.g., 9): <input name="aperture" type="text" size="3"/></p>
+    <p class="right">Shutter speed (e.g. 1/125): <input name="shutterspeed" type="text" size="3"/></p>
+    <p class="right">ISO (e.g., 640): <input name="iso" type="text" size="2"/></p>
     <p><input id="btn" name="set-config" value="Set" type="submit" /></p>
-    <p>Photos: <input name="number" type="text" size="3"/> Interval: <input name="interval" type="text" size="3"/> sec.</p>
+    <p class="right">Photos: <input name="number" type="text" size="3"/> Interval: <input name="interval" type="text" size="3"/> sec.</p>
     <p><input id="btn" name="start" value="Start" type="submit" /></p>
     <p><input id="btn" class="stop" name="stop" value="Stop" type="submit" /></p>
     <p><input id="btn" class="shutdown" name="shutdown" value="Shut down" type="submit" /></p>
     </form>
-    <p>Press <strong>Shutter Release</strong> for a single shot.<br/>
-    Use the approprite fields to specify aperture, shutter speed,<br/> and ISO values. Press <strong>Set</strong> to apply the settings.<br/>
-    Use the appropriate fields to specify the number of photos<br/>and the interval between them in seconds, then press <strong>Start</strong>.<br/>
-    Press <strong>Stop</strong> to terminate the app.<br/>
-    Press <strong>Shutdown</strong> to shut down the server.</p>
+    <p class="justify">Press <strong>Shutter Release</strong> for a single shot.</p>
+    <p class="justify">Use the approprite fields to specify aperture, shutter speed, and ISO values. Press <strong>Set</strong> to apply the settings.</p>
+    <p class="justify">Use the appropriate fields to specify the number of photos and the interval between them in seconds, then press <strong>Start</strong>.</p>
+    <p class="justify">Press <strong>Stop</strong> to terminate the app.</p>
+    <p class="justify">Press <strong>Shutdown</strong> to shut down the server.</p>
     </div>
     <style>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     body {
         font: 15px/25px 'Open Sans', sans-serif;
     }
+    p.justify {
+    text-align: justify;
+    }
+    p.right {
+    text-align: right;
+    }
     #content {
         font: 15px/25px 'Open Sans', sans-serif;
         margin: 0px auto;
-        text-align: center;
+        width: 275px;
+        text-align: left;
     }
     #btn {
         width: 11em;  height: 2em;
