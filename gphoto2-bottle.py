@@ -30,7 +30,7 @@ def release_control():
     if (request.POST.get("shutdown")):
             os.system("sudo halt")
     return """
-    <title>gPhoto2 Remote</title>
+    <title>gPhoto2 Bottle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <form method="POST" action="/">
     <div id="content"><p><input id="btn" name="shutter_release" type="submit" value="Shutter Release"></p>
