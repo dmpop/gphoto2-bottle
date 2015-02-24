@@ -16,15 +16,26 @@
 from bottle import post, route, request, run
 import os, time
 
+param1 = '/main/capturesettings/f-number=f/'
+param2 = '/main/capturesettings/shutterspeed2='
+param3 = '/main/imgsettings/iso='
+
 @route('/')
 @route('/', method='POST')
 def release_control():
     if (request.POST.get("shutter_release")):
         os.system('gphoto2 --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"')
-    if (request.POST.get("number")):
+    if (request.POST.get("start")):
         number = int(request.forms.get('number'))
         interval = int(request.forms.get('interval'))
         os.system('gphoto2 --interval '+ str(interval) +' --frames ' + str(number) + ' --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"')
+    if (request.POST.get("set-config")):
+        aperture = request.forms.get('aperture')
+        os.system('gphoto2 --set-config-value ' + param1 + aperture)
+        shutterspeed = request.forms.get('shutterspeed')
+        os.system('gphoto2 --set-config-value ' + param2 + shutterspeed)
+        iso = request.forms.get('iso')
+        os.system('gphoto2 --set-config-value ' + param3 + iso)
     if (request.POST.get("stop")):
             os.system("killall -KILL python")
     if (request.POST.get("shutdown")):
@@ -35,14 +46,17 @@ def release_control():
     <form method="POST" action="/">
     <div id="content"><p><input id="btn" name="shutter_release" type="submit" value="Shutter Release"></p>
     <p>Photos: <input name="number" type="text" size="3"/> Interval: <input name="interval" type="text" size="3"/> sec.</p>
-    <p><input id="btn" value="Start" type="submit" /></p>
+    <p><input id="btn" name="start" value="Start" type="submit" /></p>
+    <p>f/ <input name="aperture" type="text" size="1"/> Exposure: <input name="shutterspeed" type="text" size="2"/> ISO: <input name="iso" type="text" size="2"/>
+    <p><input id="btn" name="set-config" value="Set" type="submit" /></p>
     <p><input id="btn" class="stop" name="stop" value="Stop" type="submit" /></p>
     <p><input id="btn" class="shutdown" name="shutdown" value="Shut down" type="submit" /></p>
     </form>
     <p>Press <strong>Shutter Release</strong> for a single shot.<br/>
     Use the appropriate fields to specify the number of photos<br/>and the interval between them in seconds, then press <strong>Start</strong>.<br/>
+    Use the approprite fields to specify aperture, shutter speed,<br/> and ISO values. Press <strong>Set</strong> to apply the settings.<br/>
     Press <strong>Stop</strong> to terminate the app.<br/>
-    <p>Press <strong>Shutdown</strong> to shut down the server.</p>
+    Press <strong>Shutdown</strong> to shut down the server.</p>
     </div>
     <style>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
@@ -72,3 +86,4 @@ def release_control():
     </style>
     """
 run(host="0.0.0.0",port=8080, debug=True, reloader=True)
+
