@@ -39,8 +39,8 @@ def release_control():
         cmd = urllib.unquote_plus(request.forms.get('cmd'))
         os.system('gphoto2 ' + cmd)
     if (request.POST.get("start")):
-        number = int(request.forms.get('number'))
-        interval = int(request.forms.get('interval'))
+        number = request.forms.get('number')
+        interval = request.forms.get('interval')
         os.system('gphoto2 --interval '+ str(interval) +' --frames ' + str(number) + ' --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"')
     if (request.POST.get("stop")):
             os.system("killall -KILL python")
