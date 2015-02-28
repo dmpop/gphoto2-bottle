@@ -17,10 +17,10 @@ from bottle import post, route, request, run
 import os, time, urllib
 
 try:
-    import piface
+    import pifacecad
     cad = pifacecad.PiFaceCAD()
 except ImportError:
-    print "pifacecad library is missing"
+    print "pifacecad library is not installed."
 
 # Camera-specific parameters
 param1 = '/main/capturesettings/f-number=f/'
