@@ -38,7 +38,7 @@ def release_control():
             cad.lcd.backlight_on()
             cad.lcd.write('Done!')
         except:
-            print "pifacecad library is missing."
+            print "pifacecad library is not installed."
     if (request.POST.get("set-config")):
         aperture = request.forms.get('aperture')
         os.system('gphoto2 --set-config-value ' + param1 + aperture)
@@ -46,6 +46,11 @@ def release_control():
         os.system('gphoto2 --set-config-value ' + param2 + shutterspeed)
         iso = request.forms.get('iso')
         os.system('gphoto2 --set-config-value ' + param3 + iso)
+        try:
+            cad.lcd.backlight_on()
+            cad.lcd.write('Values have been set.')
+        except:
+            print "pifacecad library is not installed."
     if (request.POST.get("command")):
         cmd = urllib.unquote_plus(request.forms.get('cmd'))
         os.system('gphoto2 ' + cmd)
@@ -53,10 +58,20 @@ def release_control():
         number = request.forms.get('number')
         interval = request.forms.get('interval')
         os.system('gphoto2 --interval '+ str(interval) +' --frames ' + str(number) + ' --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"')
+        try:
+            cad.lcd.backlight_on()
+            cad.lcd.write('Done!')
+        except:
+            print "pifacecad library is not installed."
     if (request.POST.get("stop")):
-            os.system("killall -KILL python")
+        try:
+            cad.lcd.backlight_off()
+            cad.lcd.write('Bye! :-)')
+        except:
+            print "pifacecad library is not installed."
+        os.system("killall -KILL python")
     if (request.POST.get("shutdown")):
-            os.system("sudo halt")
+        os.system("sudo halt")
     return """
     <title>gPhoto2 Bottle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
