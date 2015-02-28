@@ -19,6 +19,9 @@ import os, time, urllib
 try:
     import pifacecad
     cad = pifacecad.PiFaceCAD()
+    cad.lcd.cursor_off()
+    cad.lcd.blink_off()
+    cad.lcd.clear()
 except ImportError:
     print "pifacecad library is not installed."
 
@@ -47,6 +50,7 @@ def release_control():
         iso = request.forms.get('iso')
         os.system('gphoto2 --set-config-value ' + param3 + iso)
         try:
+            cad.lcd.clear()
             cad.lcd.backlight_on()
             cad.lcd.write('Values have been set.')
         except:
@@ -59,12 +63,14 @@ def release_control():
         interval = request.forms.get('interval')
         os.system('gphoto2 --interval '+ str(interval) +' --frames ' + str(number) + ' --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"')
         try:
+            cad.lcd.clear()
             cad.lcd.backlight_on()
             cad.lcd.write('Done!')
         except:
             print "pifacecad library is not installed."
     if (request.POST.get("stop")):
         try:
+            cad.lcd.clear()
             cad.lcd.backlight_off()
             cad.lcd.write('Bye! :-)')
         except:
