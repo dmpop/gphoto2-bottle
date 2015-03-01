@@ -96,7 +96,7 @@ def release_control():
     <p class="right">Shutter speed (e.g. 1/125): <input name="shutterspeed" type="text" size="3"/></p>
     <p class="right">ISO (e.g., 640): <input name="iso" type="text" size="2"/></p>
     <p><input id="btn" name="set-config" value="Set" type="submit" /></p>
-    <p class="right">Command: <input name="cmd" type="text" size="25"/></p>
+    <p class="right">Command: <input name="cmd" type="text" size="21"/></p>
     <p><input id="btn" name="command" value="Command" type="submit" /></p>
     <p class="right">Photos: <input name="number" type="text" size="3"/> Interval: <input name="interval" type="text" size="3"/> sec.</p>
     <p><input id="btn" class="green" name="start" value="Start" type="submit" /></p>
