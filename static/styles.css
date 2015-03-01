@@ -1,0 +1,34 @@
+body {
+    font: 15px/25px 'Open Sans', sans-serif;
+}
+p.left {
+    text-align: left;
+}
+p.right {
+    text-align: right;
+}
+#content {
+    font: 15px/25px 'Open Sans', sans-serif;
+    margin: 0px auto;
+    width: 275px;
+    text-align: left;
+}
+#btn {
+    width: 11em;  height: 2em;
+    background: #3399ff;
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif; font-size: 25px; font-weight: 900;
+    letter-spacing: 3px;
+    border:none;
+}
+#btn.green {
+    background: #009900;
+}
+#btn.orange {
+    background: #ff9900;
+}
+#btn.red {
+    background: #cc0000;
+}
+</style>
