@@ -25,7 +25,7 @@ try:
     cad.lcd.blink_off()
     cad.lcd.clear()
 except ImportError:
-    print "pifacecad library is not installed."
+    pass
 
 #Import the RPi.GPIO module
 try:
@@ -36,7 +36,7 @@ try:
     GPIO.setup(27, GPIO.OUT)
     GPIO.output(27, True)
 except ImportError:
-    print "RPi.GPIO library is not installed."
+    pass
 
 # Camera-specific parameters
 param1 = '/main/capturesettings/f-number=f/'
@@ -49,7 +49,7 @@ try:
     cad.lcd.backlight_on()
     cad.lcd.write('gPhoto2 Bottle')
 except:
-    print "pifacecad library is not installed."
+    pass
 
 @route('/static/:path#.+#', name='static')
 def static(path):
@@ -64,7 +64,7 @@ def releasecontrol():
             cad.lcd.backlight_on()
             cad.lcd.write('Done!')
         except:
-            print "pifacecad library is not installed."
+            pass
     if (request.POST.get("set-config")):
         aperture = request.forms.get('aperture')
         os.system('gphoto2 --set-config-value ' + param1 + aperture)
@@ -77,7 +77,9 @@ def releasecontrol():
             cad.lcd.backlight_on()
             cad.lcd.write('Values have been set.')
         except:
-            print "pifacecad library is not installed."
+            pass
+    if (request.POST.get("get-all-files")):
+        os.system('gphoto2 --get-all-files')
     if (request.POST.get("command")):
         cmd = urllib.unquote_plus(request.forms.get('cmd'))
         os.system('gphoto2 ' + cmd)
@@ -90,14 +92,14 @@ def releasecontrol():
             cad.lcd.backlight_on()
             cad.lcd.write('Done!')
         except:
-            print "pifacecad library is not installed."
+            pass
     if (request.POST.get("stop")):
         try:
             cad.lcd.clear()
             cad.lcd.backlight_off()
             cad.lcd.write('Bye!')
         except:
-            print "pifacecad library is not installed."
+            pass
         os.system("killall -KILL python")
     if (request.POST.get("shutdown")):
         os.system("sudo halt")
@@ -132,7 +134,7 @@ def cablerelease():
         GPIO.output(25, False)
         GPIO.output(23, False)
     except:
-        print "RPi.GPIO library is not installed."
+        pass
 
 @route('/cablerelease')
 @route('/cablerelease', method='POST')

@@ -8,6 +8,7 @@
 <div id="content">
     <form method="POST" action="/">
         <p class="center"><a href="config">View config</a> | <a href="help">Help</a></p>
+        <p><input id="btn" name="get-all-files" type="submit" value="Transfer"></p>
         <p><input id="btn" class="green" name="shutter-release" type="submit" value="Shutter Release"></p>
         <p class="right">Aperture (e.g., 9): <input name="aperture" type="text" size="3"/></p>
         <p class="right">Shutter speed (e.g. 1/125): <input name="shutterspeed" type="text" size="3"/></p>
