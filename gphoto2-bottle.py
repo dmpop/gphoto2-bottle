@@ -123,7 +123,7 @@ def help():
     return output
 
 #Cable release interface
-def cablerelease():
+def trigger():
     try:
         GPIO.setup(23, GPIO.OUT)
         GPIO.setup(25, GPIO.OUT)
@@ -136,17 +136,17 @@ def cablerelease():
     except:
         pass
 
-@route('/cable')
-@route('/cable', method='POST')
-def cable_release():
-    if (request.POST.get("cable-release")):
-        cablerelease()
+@route('/trigger')
+@route('/trigger', method='POST')
+def switch():
+    if (request.POST.get("trigger")):
+        trigger()
     if (request.POST.get("start")):
         i = 1
         number = int(request.forms.get('number'))
         interval = int(request.forms.get('interval'))
         while (i <= number):
-            cablerelease()
+            trigger()
             time.sleep(interval)
             i = i + 1
     if (request.POST.get("stop")):
@@ -157,7 +157,7 @@ def cable_release():
             os.system("killall -KILL python")
     if (request.POST.get("shutdown")):
             os.system("sudo halt")
-    output = template('cable-release.tpl')
+    output = template('trigger.tpl')
     return output
 
 run(host="0.0.0.0",port=8080, debug=True, reloader=True)

@@ -7,8 +7,8 @@
 </head>
 <div id="content">
     <p class="center"><a href="help">Help</a></p>
-    <form method="POST" action="/cable">
-        <p><input id="btn" name="cable-release" type="submit" value="Shutter Release"></p>
+    <form method="POST" action="/trigger">
+        <p><input id="btn" name="trigger" type="submit" value="Shutter Release"></p>
         <p class="right">Photos: <input name="number" type="text" size="3"/> Interval: <input name="interval" type="text" size="3"/> sec.</p>
         <p><input id="btn" name="start" value="Start" type="submit" /></p>
         <p><input id="btn" class="orange" name="stop" value="Stop" type="submit" /></p>
