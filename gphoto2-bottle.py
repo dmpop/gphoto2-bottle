@@ -62,7 +62,7 @@ def releasecontrol():
         os.system(gphoto2_command)
         try:
             cad.lcd.backlight_on()
-            cad.lcd.write('Done!')
+            cad.lcd.write('All dne!')
         except:
             pass
     if (request.POST.get("set-config")):
@@ -75,7 +75,7 @@ def releasecontrol():
         try:
             cad.lcd.clear()
             cad.lcd.backlight_on()
-            cad.lcd.write('Values have been set.')
+            cad.lcd.write('All done!.')
         except:
             pass
     if (request.POST.get("get-all-files")):
@@ -90,7 +90,7 @@ def releasecontrol():
         try:
             cad.lcd.clear()
             cad.lcd.backlight_on()
-            cad.lcd.write('Done!')
+            cad.lcd.write('All done!')
         except:
             pass
     if (request.POST.get("stop")):
