@@ -6,6 +6,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 </head>
 <div id="content">
+    <img src="static/nikkormat-ftn.png">
     <p class="mono"><a href="../">Back</a></p>
     <p class="mono">Press <strong>Shutter Release</strong> for a single shot.</p>
     <p class="mono">Use the approprite fields to specify aperture, shutter speed, and ISO values. Press <strong>Set</strong> to apply the settings.</p>

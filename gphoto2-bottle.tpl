@@ -6,7 +6,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 </head>
 <div id="content">
-    <img src="static/nikkormat-ftn.png">
     <form method="POST" action="/">
         <p class="center"><a href="config">View config</a> | <a href="help">Help</a></p>
         <p><input id="btn" class="green" name="shutter_release" type="submit" value="Shutter Release"></p>
