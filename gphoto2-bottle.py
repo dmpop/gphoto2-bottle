@@ -136,8 +136,8 @@ def cablerelease():
     except:
         pass
 
-@route('/cr')
-@route('/cr', method='POST')
+@route('/cable')
+@route('/cable', method='POST')
 def cable_release():
     if (request.POST.get("cable-release")):
         cablerelease()
