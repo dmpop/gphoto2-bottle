@@ -4,6 +4,9 @@ body {
 p.right {
     text-align: right;
 }
+p.center {
+    text-align: center;
+}
 p.mono {
     font-family: 'Oxygen Mono';
 }

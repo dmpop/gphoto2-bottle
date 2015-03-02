@@ -6,8 +6,9 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 </head>
 <div id="content">
+    <img src="static/nikkormat-ftn.png">
     <form method="POST" action="/">
-        <p><a href="config">View config</a> | <a href="help">Help</a></p>
+        <p class="center"><a href="config">View config</a> | <a href="help">Help</a></p>
         <p><input id="btn" class="green" name="shutter_release" type="submit" value="Shutter Release"></p>
         <p class="right">Aperture (e.g., 9): <input name="aperture" type="text" size="3"/></p>
         <p class="right">Shutter speed (e.g. 1/125): <input name="shutterspeed" type="text" size="3"/></p>
