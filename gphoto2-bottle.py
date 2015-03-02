@@ -35,7 +35,7 @@ gphoto2_command = 'gphoto2 --capture-image-and-download --filename "%Y%m%d-%H%M%
 
 try:
     cad.lcd.backlight_on()
-    cad.lcd.write('gPhoto2 Bottle is ready')
+    cad.lcd.write('gPhoto2 Bottle')
 except:
     print "pifacecad library is not installed."
 
