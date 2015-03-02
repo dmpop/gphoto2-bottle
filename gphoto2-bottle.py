@@ -40,6 +40,12 @@ def static(path):
 @route('/')
 @route('/', method='POST')
 def release_control():
+    try:
+        cad.lcd.clear()
+        cad.lcd.backlight_on()
+        cad.lcd.write('gPhoto2 Bottle is ready')
+    except:
+        print "pifacecad library is not installed."
     if (request.POST.get("shutter_release")):
         os.system(gphoto2_command)
         try:
