@@ -1,11 +1,11 @@
 body {
     font: 15px/25px 'Open Sans', sans-serif;
 }
-p.left {
-    text-align: left;
-}
 p.right {
     text-align: right;
+}
+p.mono {
+    font-family: 'Oxygen Mono';
 }
 #content {
     font: 15px/25px 'Open Sans', sans-serif;
