@@ -17,6 +17,7 @@ from bottle import post, route, request, static_file, template, run
 from subprocess import Popen, PIPE
 import os, time, urllib
 
+#Import the pifacecad module
 try:
     import pifacecad
     cad = pifacecad.PiFaceCAD()
@@ -25,6 +26,17 @@ try:
     cad.lcd.clear()
 except ImportError:
     print "pifacecad library is not installed."
+
+#Import the RPi.GPIO module
+try:
+    import RPi.GPIO as GPIO
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
+    #Turn the LED on pin 27 on (indicates that the server is up and running)
+    GPIO.setup(27, GPIO.OUT)
+    GPIO.output(27, True)
+except ImportError:
+    print "RPi.GPIO library is not installed."
 
 # Camera-specific parameters
 param1 = '/main/capturesettings/f-number=f/'
@@ -106,6 +118,45 @@ def config():
 @route('/help')
 def help():
     output = template('help.tpl')
+    return output
+
+#Cable release interface
+
+def cablerelease():
+    try:
+        GPIO.setup(23, GPIO.OUT)
+        GPIO.setup(25, GPIO.OUT)
+        GPIO.output(23, True)
+        time.sleep(0.5)
+        GPIO.output(25, True)
+        time.sleep(0.5)
+        GPIO.output(25, False)
+        GPIO.output(23, False)
+    except:
+        print "RPi.GPIO library is not installed."
+
+@route('/cablerelease')
+@route('/cablerelease', method='POST')
+def release_control():
+    if (request.POST.get("cable-release")):
+        cablerelease()
+    if (request.POST.get("start")):
+        i = 1
+        number = int(request.forms.get('number'))
+        interval = int(request.forms.get('interval'))
+        while (i <= number):
+            cable-release()
+            time.sleep(interval)
+            i = i + 1
+    if (request.POST.get("stop")):
+            try:
+                GPIO.output(27, False)
+            except:
+                print "RPi.GPIO library is not installed."
+            os.system("killall -KILL python")
+    if (request.POST.get("shutdown")):
+            os.system("sudo halt")
+    output = template('cable-release.tpl')
     return output
 
 run(host="0.0.0.0",port=8080, debug=True, reloader=True)
