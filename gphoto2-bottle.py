@@ -146,7 +146,7 @@ def release_control():
         number = int(request.forms.get('number'))
         interval = int(request.forms.get('interval'))
         while (i <= number):
-            cable-release()
+            cablerelease()
             time.sleep(interval)
             i = i + 1
     if (request.POST.get("stop")):
