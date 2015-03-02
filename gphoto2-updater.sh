@@ -53,7 +53,7 @@ echo "Installing dependencies"
 echo "-----------------------"
 echo
 
-apt-get install -y libltdl-dev libusb-dev libexif-dev libpopt-dev
+apt-get install -y libltdl-dev libusb-dev libexif-dev libpopt-dev libudev-dev
 
 echo 
 echo "-------------------------"
