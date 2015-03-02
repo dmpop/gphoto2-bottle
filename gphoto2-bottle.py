@@ -57,8 +57,8 @@ def static(path):
 
 @route('/')
 @route('/', method='POST')
-def release_control():
-    if (request.POST.get("shutter_release")):
+def releasecontrol():
+    if (request.POST.get("shutter-release")):
         os.system(gphoto2_command)
         try:
             cad.lcd.backlight_on()
@@ -121,7 +121,6 @@ def help():
     return output
 
 #Cable release interface
-
 def cablerelease():
     try:
         GPIO.setup(23, GPIO.OUT)
