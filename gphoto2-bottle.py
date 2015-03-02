@@ -83,7 +83,7 @@ def release_control():
         try:
             cad.lcd.clear()
             cad.lcd.backlight_off()
-            cad.lcd.write('Bye! :-)')
+            cad.lcd.write('Bye!')
         except:
             print "pifacecad library is not installed."
         os.system("killall -KILL python")
