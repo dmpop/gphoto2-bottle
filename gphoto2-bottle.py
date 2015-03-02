@@ -41,7 +41,6 @@ def static(path):
 @route('/', method='POST')
 def release_control():
     try:
-        cad.lcd.clear()
         cad.lcd.backlight_on()
         cad.lcd.write('gPhoto2 Bottle is ready')
     except:
