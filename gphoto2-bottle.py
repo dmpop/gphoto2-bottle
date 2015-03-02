@@ -33,6 +33,12 @@ param3 = '/main/imgsettings/iso='
 # Default gPhoto2 command
 gphoto2_command = 'gphoto2 --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"'
 
+try:
+    cad.lcd.backlight_on()
+    cad.lcd.write('gPhoto2 Bottle is ready')
+except:
+    print "pifacecad library is not installed."
+
 @route('/static/:path#.+#', name='static')
 def static(path):
     return static_file(path, root='static')
@@ -40,11 +46,6 @@ def static(path):
 @route('/')
 @route('/', method='POST')
 def release_control():
-    try:
-        cad.lcd.backlight_on()
-        cad.lcd.write('gPhoto2 Bottle is ready')
-    except:
-        print "pifacecad library is not installed."
     if (request.POST.get("shutter_release")):
         os.system(gphoto2_command)
         try:
