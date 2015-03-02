@@ -139,6 +139,8 @@ def cablerelease():
 @route('/cablerelease')
 @route('/cablerelease', method='POST')
 def release_control():
+    if (request.POST.get("get-all-files")):
+        os.system('gphoto2 --get-all-files')
     if (request.POST.get("cable-release")):
         cablerelease()
     if (request.POST.get("start")):

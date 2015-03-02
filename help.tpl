@@ -8,6 +8,7 @@
 <div id="content">
     <img src="static/nikkormat-ftn.png">
     <p class="mono"><a href="../">Back</a></p>
+    <p class="mono">Press <strong>Transfer</strong> to download photos from the camera to the server.</p>
     <p class="mono">Press <strong>Shutter Release</strong> for a single shot.</p>
     <p class="mono">Use the approprite fields to specify aperture, shutter speed, and ISO values. Press <strong>Set</strong> to apply the settings.</p>
     <p class="mono">Use the appropriate fields to specify the number of photos and the interval between them in seconds, then press <strong>Start</strong>.</p>
