@@ -62,7 +62,7 @@ def releasecontrol():
         os.system(gphoto2_command)
         try:
             cad.lcd.backlight_on()
-            cad.lcd.write('All dne!')
+            cad.lcd.write('All done!')
         except:
             pass
     if (request.POST.get("set-config")):
