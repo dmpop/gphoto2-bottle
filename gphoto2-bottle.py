@@ -17,16 +17,6 @@ from bottle import post, route, request, static_file, template, run
 from subprocess import Popen, PIPE
 import os, time, urllib
 
-#Import the pifacecad module
-try:
-    import pifacecad
-    cad = pifacecad.PiFaceCAD()
-    cad.lcd.cursor_off()
-    cad.lcd.blink_off()
-    cad.lcd.clear()
-except ImportError:
-    pass
-
 #Import the RPi.GPIO module
 try:
     import RPi.GPIO as GPIO
@@ -45,12 +35,6 @@ param3 = '/main/imgsettings/iso='
 # Default gPhoto2 command
 gphoto2_command = 'gphoto2 --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"'
 
-try:
-    cad.lcd.backlight_on()
-    cad.lcd.write('gPhoto2 Bottle')
-except:
-    pass
-
 @route('/static/:path#.+#', name='static')
 def static(path):
     return static_file(path, root='static')
@@ -60,11 +44,7 @@ def static(path):
 def releasecontrol():
     if (request.POST.get("shutter-release")):
         os.system(gphoto2_command)
-        try:
-            cad.lcd.backlight_on()
-            cad.lcd.write('All done!')
-        except:
-            pass
+
     if (request.POST.get("set-config")):
         aperture = request.forms.get('aperture')
         os.system('gphoto2 --set-config-value ' + param1 + aperture)
@@ -72,12 +52,7 @@ def releasecontrol():
         os.system('gphoto2 --set-config-value ' + param2 + shutterspeed)
         iso = request.forms.get('iso')
         os.system('gphoto2 --set-config-value ' + param3 + iso)
-        try:
-            cad.lcd.clear()
-            cad.lcd.backlight_on()
-            cad.lcd.write('All done!.')
-        except:
-            pass
+
     if (request.POST.get("get-all-files")):
         os.system('gphoto2 --get-all-files')
     if (request.POST.get("command")):
@@ -87,19 +62,7 @@ def releasecontrol():
         number = request.forms.get('number')
         interval = request.forms.get('interval')
         os.system('gphoto2 --interval '+ str(interval) +' --frames ' + str(number) + ' --capture-image-and-download --filename "%Y%m%d-%H%M%S-%03n.%C"')
-        try:
-            cad.lcd.clear()
-            cad.lcd.backlight_on()
-            cad.lcd.write('All done!')
-        except:
-            pass
     if (request.POST.get("stop")):
-        try:
-            cad.lcd.clear()
-            cad.lcd.backlight_off()
-            cad.lcd.write('Bye!')
-        except:
-            pass
         os.system("killall -KILL python")
     if (request.POST.get("shutdown")):
         os.system("sudo halt")

@@ -11,7 +11,7 @@
         <p><input id="btn" name="get-all-files" type="submit" value="Transfer"></p>
         <p><input id="btn" class="green" name="shutter-release" type="submit" value="Shutter Release"></p>
         <p class="right">Aperture (e.g., 9): <input name="aperture" type="text" size="3"/></p>
-        <p class="right">Shutter speed (e.g. 1/125): <input name="shutterspeed" type="text" size="3"/></p>
+        <p class="right">Shutter speed (e.g., 1/125): <input name="shutterspeed" type="text" size="3"/></p>
         <p class="right">ISO (e.g., 640): <input name="iso" type="text" size="2"/></p>
         <p><input id="btn" name="set-config" value="Set" type="submit" /></p>
         <p class="right">Command: <input name="cmd" type="text" size="21"/></p>
