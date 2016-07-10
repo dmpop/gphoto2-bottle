@@ -20,11 +20,6 @@ gPhoto2 Bottle also provides an interface for controlling a transistor-based rem
 
 <img src="transistor_switch_schematic.png" alt="Transistor switch schematic">
 
-Use the following diagram to wire the transistor switch and connect it to the camera and Raspberry Pi:
-
-<img src="transistor_switch_bb.png" alt="Transistor switch schematic">
-
-
 ## Dependencies
 
 * Python
